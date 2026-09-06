@@ -1,0 +1,406 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+  background-color: #f7f7fb;
+  color: #222;
+}
+
+header {
+  background: linear-gradient(135deg, #2c3e50, #4a6572);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+header p {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-bottom: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: 600;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 4px;
+  transition: border-color 0.2s;
+}
+
+nav a:hover {
+  border-color: white;
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.filters select {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  background: white;
+  cursor: pointer;
+}
+
+.campaign-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.campaign-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.campaign-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.campaign-card .card-body {
+  padding: 18px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.campaign-card .category-badge {
+  display: inline-block;
+  background: #eaf3ff;
+  color: #2c6ecf;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+
+.campaign-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 6px;
+}
+
+.campaign-card .region {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.campaign-card p.desc {
+  font-size: 0.9rem;
+  color: #444;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.campaign-card .goal {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+.campaign-card a.view-btn {
+  display: inline-block;
+  background: #2c6ecf;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.campaign-card a.view-btn:hover {
+  background: #1d4f9c;
+}
+
+#loadingText {
+  text-align: center;
+  color: #888;
+  grid-column: 1 / -1;
+  padding: 40px 0;
+}
+
+.detail-container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+}
+
+.detail-card {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.detail-card h2 {
+  margin: 10px 0 5px;
+  font-size: 1.6rem;
+}
+
+.detail-card .region {
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.detail-card .requester {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.detail-section {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.detail-section h3 {
+  font-size: 1rem;
+  color: #2c6ecf;
+  margin-bottom: 8px;
+}
+
+.scanner-img {
+  max-width: 250px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+}
+
+.form-container h2 {
+  margin-bottom: 10px;
+}
+
+.form-note {
+  background: #fff8e1;
+  border-left: 4px solid #f0ad4e;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #7a5c00;
+  margin-bottom: 25px;
+  border-radius: 4px;
+}
+
+#campaignForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#campaignForm label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 12px;
+}
+
+#campaignForm input,
+#campaignForm select,
+#campaignForm textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400 !important;
+  font-size: 0.85rem !important;
+}
+
+.checkbox-label input {
+  width: auto;
+}
+
+#campaignForm button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #2c6ecf;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#campaignForm button:hover {
+  background: #1d4f9c;
+}
+
+#formMessage {
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.login-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+#loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#loginForm label {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+#loginForm input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+#loginForm button {
+  margin-top: 20px;
+  padding: 12px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#loginForm button:hover {
+  background: #1a252f;
+}
+
+#loginMessage {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px 60px;
+}
+
+.dashboard-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.dashboard-card h3 {
+  margin: 8px 0 4px;
+}
+
+.dashboard-card .region {
+  color: #777;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-card .desc {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.dashboard-card .goal {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.dashboard-card p {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.dashboard-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.approve-btn, .reject-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.approve-btn {
+  background: #2e7d32;
+  color: white;
+}
+
+.approve-btn:hover {
+  background: #245e26;
+}
+
+.reject-btn {
+  background: #c62828;
+  color: white;
+}
+
+.reject-btn:hover {
+  background: #9c1f1f;
+}
